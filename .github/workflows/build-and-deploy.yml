@@ -34,5 +34,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages # The branch the action should deploy to.
           FOLDER: dist # The folder the action should deploy.
-          CLEAN: true # Automatically remove deleted files from the deploy branch      
+          CLEAN: true # Automatically remove deleted files from the deploy branch    
 
+      # telegram  message
+      - name: send custom message with args
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          args: ${{ github.action }} the ${{ github.repo }} was builded https://ilya-pro.github.io/rebus-2020-10-leadersofdigital-ui/
