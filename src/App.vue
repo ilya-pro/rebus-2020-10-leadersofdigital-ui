@@ -49,7 +49,7 @@ export default {
     // пункты навигаии
     items: [
       /*{id: 'home', title: 'Главная', icon: 'mdi-star', path: '/'},*/
-      {id: 'modules', title: 'Учебные модули', icon: 'mdi-lightbulb', path: '/modules'},
+      {id: 'modules', title: 'Учебные модули', icon: 'mdi-book-outline', path: '/modules'},
       /*{id: 'account', title: 'Аккаунт', icon: 'mdi-account', path: '/account'}*/
       /*{id: 'projects', title: 'Проекты', icon: 'mdi-star', path: '/projects'},
       {id: 'shop', title: 'Магазин', icon: 'mdi-star', path: '/shop'},*/
