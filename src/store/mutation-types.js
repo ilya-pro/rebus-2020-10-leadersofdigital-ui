@@ -34,3 +34,11 @@ export const LOAD_USER_DATA = 'LOAD_USER_DATA';
  */
 export const SET_USER_DATA = 'SET_USER_DATA';
 
+/**
+ * Получение списка модулей
+ * @type {string}
+ */
+export const LOAD_MODULES = 'LOAD_MODULES';
+
+export const APPLY_MODULES = 'APPLY_MODULES';
+
