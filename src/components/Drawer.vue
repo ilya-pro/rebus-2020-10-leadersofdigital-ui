@@ -1,5 +1,6 @@
 <template>
   <v-navigation-drawer app
+                       temporary
                        :disable-resize-watcher="true"
                        :value="value"
   >

@@ -20,7 +20,8 @@ export default new Vuex.Store({
     token: localStorage.getItem('user-token') || '',
 
     user: {
-      avatarSmall: ''
+      avatarSmall: '',
+      groups: []
     },
 
     // список учебных модулей
@@ -38,12 +39,19 @@ export default new Vuex.Store({
       console.log('m   AUTH_REQUEST');
       state.status = 'loading'
     },
-    [AUTH_SUCCESS]: (state, token) => {
+    [AUTH_SUCCESS]: (state, data) => {
       state.status = 'success'
-      state.token = token
+      state.token = data.token
+      state.user.groups = data.user;
+      localStorage.setItem('user-token', data.token); // store the token in localstorage
     },
     [AUTH_ERROR]: (state) => {
       state.status = 'error'
+    },
+    [AUTH_LOGOUT]: (state) => {
+      state.status = '';
+      state.token = '';
+      localStorage.removeItem('user-token');
     },
     [SET_USER_DATA]: (state, userData) => {
       console.log('userData 3', userData);
@@ -61,22 +69,14 @@ export default new Vuex.Store({
   // обновляет state через вызов mutations
   actions: {
     // запрос подключения
-    [AUTH_REQUEST]: ({commit, dispatch}, user) => {
-      console.log('A   AUTH_REQUEST', commit, dispatch, user);
+    [AUTH_REQUEST]: ({commit/*, dispatch*/}, user) => {
       return new Promise((resolve, reject) => { // The Promise used for router redirect in login
         commit(AUTH_REQUEST);
-        // TODO real method name
-        //axios({url: API_BASE_URL + 'users/login/', data: user, method: 'POST' })
         axios.post(API_BASE_URL + 'users/login/', user)
-          .then(resp => {
-            console.log('TH');
-            const token = resp.data.token;
-            localStorage.setItem('user-token', token); // store the token in localstorage
-            commit(AUTH_SUCCESS, token);
-            // you have your token, now log in your user :)
-            //TODO
-            //dispatch(USER_REQUEST)
-            resolve(resp);
+          .then(response => {
+            console.log('login OK', response.data.token, response.data);
+            commit(AUTH_SUCCESS, response.data);
+            resolve(response);
           })
           .catch(err => {
             console.log('ERROR');
