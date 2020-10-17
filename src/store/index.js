@@ -4,7 +4,7 @@ import axios from "axios";
 import {
   AUTH_REQUEST, AUTH_SUCCESS, AUTH_ERROR, AUTH_LOGOUT,
   LOAD_USER_DATA, SET_USER_DATA,
-  LOAD_MODULES, APPLY_MODULES, LOAD_SINGLE_MODULE, APPLY_SINGLE_MODULES, MODULE_SAVE
+  LOAD_MODULES, APPLY_MODULES, LOAD_SINGLE_MODULE, APPLY_SINGLE_MODULES, MODULE_SAVE, MODULE_UPDATE
 } from './mutation-types'
 import {API_BASE_URL} from '@/utils/axios-helper';
 
@@ -136,6 +136,17 @@ export default new Vuex.Store({
       axios.post(API_BASE_URL + `education/modules/`, context.state.currentModule, auth).then(result => {
         console.log(result.data)
       })
+    },
+    [MODULE_UPDATE]: (context, moduleId) => {
+      const auth = {
+        headers: { 'Authorization': 'Bearer '+ context.state.token }
+      }
+      console.log('MODULE_UPDATE', context.state.currentModule);
+      axios.patch(API_BASE_URL + 'education/modules/' + moduleId + '/', context.state.currentModule, auth).then(result => {
+        console.log(result.data)
+      }).catch((error) => {
+        console.log('error', error)
+      });
     }
   },
   // вычислимые свойства состояния
