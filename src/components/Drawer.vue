@@ -8,6 +8,16 @@
       dense
       nav
       class="py-0">
+      <v-list-item class="px-2">
+      </v-list-item>
+      <!--<v-list-item class="px-2">
+        <v-btn
+          icon
+          @click.stop="mini = !mini"
+        >
+          <v-icon>{{ mini ? 'mdi-chevron-right' : 'mdi-chevron-left' }}</v-icon>
+        </v-btn>
+      </v-list-item>-->
       <v-list-item
         v-for="item in items"
         :key="item.id"
@@ -54,7 +64,14 @@ export default {
     // пункты навигаии
     items: Array
   },
-  data: () => ({}),
+  data: () => ({
+    mini: true
+  }),
+  computed: {
+    /*chevronIcon() {
+      return this.mini ? 'mdi-chevron-right' : 'mdi-chevron-left';
+    }*/
+  },
   methods: {
     clickExit () {
       console.log('exit')

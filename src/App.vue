@@ -12,7 +12,12 @@
       <!--class="hidden-md-and-up"-->
       <v-app-bar-nav-icon v-if="$store.state.token" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>{{ this.$route.title }}</v-toolbar-title>
-      <HealthChecker/>
+      <v-tabs v-if="$route.path.includes('/modules/')">
+        <v-tab :to="{ path: `/modules/${this.$route.params.id}/common` }">Общее</v-tab>
+        <v-tab :to="{ path: `/modules/${this.$route.params.id}/scheme` }">Схема</v-tab>
+      </v-tabs>
+      <!--{{ this.$route.params.id }}-->
+      <!--<HealthChecker/>-->
     </v-app-bar>
     <!-- Sizes your content based upon application components -->
     <v-main>
@@ -34,13 +39,11 @@
 <script>
 // import HelloWorld from './components/HelloWorld'
 import Drawer from '@/components/Drawer'
-import HealthChecker from '@/components/base/HealthChecker'
 
 export default {
   name: 'App',
 
   components: {
-    HealthChecker,
     Drawer
   },
 

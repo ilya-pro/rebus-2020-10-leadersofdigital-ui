@@ -21,11 +21,19 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/Modules.vue')
   },
   {
-    path: '/modules/:id',
-    alias: ['/modules/new-module'],
+    path: '/modules/:id', // '/modules/new-module'
+    //redirect: '/modules/:id/common',
+    //redirect: { name: 'ModuleMainPage', params: { id: ':id', detail: 'common' } },
+    redirect: to => {
+      return to.path + '/common'
+    }
+  },
+  {
+    path: '/modules/:id/:detail', // '/modules/new-module'
+    //alias: ['/modules/:id/:detail'], ///modules/:id/common', '/modules/:id/scheme'
     name: 'ModuleMainPage',
     component: () => import(/* webpackChunkName: "about" */ '../views/ModuleMainPage.vue')
-  }
+  },
 ]
 
 const router = new VueRouter({

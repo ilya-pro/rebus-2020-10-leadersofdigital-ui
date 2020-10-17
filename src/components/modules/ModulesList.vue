@@ -2,7 +2,7 @@
   <div class="rb-ModulesList">
     <div class="rb-ModulesList__header">
       Учебные модули
-      <router-link :to="{ name: 'ModuleMainPage', params: { id: 'new-module' }}">Создать</router-link>
+      <router-link :to="{ name: 'ModuleMainPage', params: { id: 'new-module', detail: 'common' }}">Создать</router-link>
     </div>
     <v-row>
       <v-col v-for="module in $store.state.modules" :key="module.id" cols="12" md="6">

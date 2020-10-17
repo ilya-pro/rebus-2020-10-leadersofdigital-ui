@@ -1,5 +1,5 @@
 <template>
-  <v-card :to="{ name: 'ModuleMainPage', params: { id: value.id }}">
+  <v-card :to="{ name: 'ModuleMainPage', params: { id: value.id, detail: 'common' }}">
     <v-row>
       <v-col cols="12" md="4">
         <v-img
