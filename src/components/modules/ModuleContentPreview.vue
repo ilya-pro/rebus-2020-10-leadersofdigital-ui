@@ -1,7 +1,11 @@
 <template>
-  <div class="rb-ModuleContentPreview">
-    ModuleContentPreview
-  </div>
+  <v-card
+    class="rb-ModuleContentPreview pa-6"
+    tile
+    height="100%"
+  >
+    <v-card-title>ModuleContentPreview</v-card-title>
+  </v-card>
 </template>
 
 <script>

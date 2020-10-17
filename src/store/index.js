@@ -28,7 +28,7 @@ export default new Vuex.Store({
     modules: [],
 
     // текущий модуль
-    currentModule: null
+    currentModule: {  }
   },
   /*
     фиксация и отслеживание изменений state
