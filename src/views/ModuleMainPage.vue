@@ -1,15 +1,15 @@
 <template>
   <div class="rb-Login">
-    <LoginForm/>
+    <ModuleMain/>
   </div>
 </template>
 
 <script>
-import LoginForm from '../components/LoginForm'
+import ModuleMain from '@/components/modules/ModuleMain'
 
 export default {
   name: 'Login',
-  components: { LoginForm }
+  components: { ModuleMain }
 }
 </script>
 

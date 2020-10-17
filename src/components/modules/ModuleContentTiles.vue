@@ -1,14 +1,12 @@
 <template>
-  <div class="rb-ModulesList">
-    Учебные модули
-
+  <div class="rb-ModuleContentTiles">
+    ModuleContentTiles
   </div>
-
 </template>
 
 <script>
 export default {
-  name: 'ModulesList'
+  name: 'ModuleContentTiles'
 }
 </script>
 

@@ -1,14 +1,16 @@
 <template>
     <div class="rb-Login">
-        <LoginForm />
+        <ModulesList/>
     </div>
 </template>
 
 <script>
-    import LoginForm from "../components/LoginForm";
+    import ModulesList from '@/components/ModulesList'
     export default {
         name: "Login",
-        components: {LoginForm}
+        components: {
+          ModulesList,
+        }
     }
 </script>
 
