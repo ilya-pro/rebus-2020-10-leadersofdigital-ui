@@ -42,3 +42,12 @@ export const LOAD_MODULES = 'LOAD_MODULES';
 
 export const APPLY_MODULES = 'APPLY_MODULES';
 
+/**
+ * Получение данных одного модуля
+ * @type {string}
+ */
+export const LOAD_SINGLE_MODULE = 'LOAD_SINGLE_MODULE';
+
+export const APPLY_SINGLE_MODULES = 'APPLY_SINGLE_MODULES';
+
+

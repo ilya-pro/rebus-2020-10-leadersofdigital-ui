@@ -5,7 +5,7 @@
       <router-link :to="{ name: 'ModuleMainPage', params: { id: 'new-module' }}">Создать</router-link>
     </div>
     <v-row>
-      <v-col v-for="module in $store.state.modules" :key="module.id" cols="12" md="4">
+      <v-col v-for="module in $store.state.modules" :key="module.id" cols="12" md="6">
         <ModuleCard :value="module"/>
       </v-col>
     </v-row>

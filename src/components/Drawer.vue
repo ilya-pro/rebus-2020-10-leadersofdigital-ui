@@ -34,17 +34,16 @@
         </v-list-item-content>
       </v-list-item>
     </v-list>
-    <HealthChecker/>
+
   </v-navigation-drawer>
 </template>
 
 <script>
 import { AUTH_LOGOUT } from '@/store/mutation-types'
-import HealthChecker from '@/components/base/HealthChecker'
 
 export default {
   name: 'Drawer',
-  components: { HealthChecker },
+  components: {  },
   props: {
     // для работы v-model снаружи, отображать панель или нет
     value: {
