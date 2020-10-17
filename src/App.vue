@@ -2,12 +2,15 @@
   <v-app>
     <!-- navigation drawer -->
     <Drawer v-model="drawer"
-            :items="items"/>
+            :items="items"
+            />
 
     <!-- header -->
     <v-app-bar app
                color="#262C40"
                dark>
+      <!--class="hidden-md-and-up"-->
+      <v-app-bar-nav-icon v-if="$store.state.token" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>{{ this.$route.title }}</v-toolbar-title>
       <HealthChecker/>
     </v-app-bar>
@@ -42,8 +45,7 @@ export default {
   },
 
   data: () => ({
-    // TODO fix to false
-    drawer: true,//false,
+    drawer: false,
     // пункты навигаии
     items: [
       /*{id: 'home', title: 'Главная', icon: 'mdi-star', path: '/'},*/

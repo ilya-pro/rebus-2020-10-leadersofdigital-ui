@@ -1,28 +1,37 @@
 <template>
-  <v-form v-model="valid"
-          ref="form">
-    <v-container>
-      <v-text-field
-        v-model="email"
-        label="Ваш e-mail"
-        :rules="emailRules"
-        @keydown.enter="loginClick()"
-      ></v-text-field>
-      <v-text-field
-        v-model="password"
-        label="Пароль"
-        :rules="passwordRules"
-        :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-        :type="showPassword ? 'text' : 'password'"
-        @keydown.enter="loginClick()"
-        @click:append="showPassword = !showPassword"
-      ></v-text-field>
-      <v-btn color="primary" dark
-             @click="loginClick()"
-      >Поехали!
-      </v-btn>
-    </v-container>
-  </v-form>
+  <v-row >
+    <v-col cols="12"  md="6" >
+      <v-form v-model="valid"
+              ref="form"
+              class="mb-4">
+        <v-container>
+          <v-text-field
+            v-model="email"
+            label="Ваш e-mail"
+            :rules="emailRules"
+            @keydown.enter="loginClick()"
+          ></v-text-field>
+          <v-text-field
+            v-model="password"
+            label="Пароль"
+            :rules="passwordRules"
+            :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+            :type="showPassword ? 'text' : 'password'"
+            @keydown.enter="loginClick()"
+            @click:append="showPassword = !showPassword"
+          ></v-text-field>
+          <v-btn color="primary" dark
+                 @click="loginClick()"
+          >Поехали!
+          </v-btn>
+        </v-container>
+      </v-form>
+    </v-col>
+    <v-col cols="12" md="6">
+      <div>ЛОГО</div>
+    </v-col>
+  </v-row>
+
 </template>
 
 <script>
@@ -59,10 +68,9 @@ export default {
       this.$store.dispatch(AUTH_REQUEST, {
         email,
         password
-      }).then(() => {
-        console.log('login OK')
+      }).then((/*response*/) => {
         // переход на главную страницу
-        this.$router.push('/proposals')
+        this.$router.push('/')
       })
     }
   }
