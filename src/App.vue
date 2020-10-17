@@ -16,7 +16,6 @@
       <v-container fluid>
 
         <!-- view for current route -->
-        hello
         <router-view></router-view>
       </v-container>
     </v-main>
@@ -39,14 +38,15 @@ export default {
   },
 
   data: () => ({
-    drawer: false,
+    // TODO fix to false
+    drawer: true,//false,
     // пункты навигаии
     items: [
       /*{id: 'home', title: 'Главная', icon: 'mdi-star', path: '/'},*/
       {id: 'modules', title: 'Учебные модули', icon: 'mdi-lightbulb', path: '/modules'},
       /*{id: 'account', title: 'Аккаунт', icon: 'mdi-account', path: '/account'}*/
-      {id: 'projects', title: 'Проекты', icon: 'mdi-star', path: '/projects'},
-      {id: 'shop', title: 'Магазин', icon: 'mdi-star', path: '/shop'},
+      /*{id: 'projects', title: 'Проекты', icon: 'mdi-star', path: '/projects'},
+      {id: 'shop', title: 'Магазин', icon: 'mdi-star', path: '/shop'},*/
     ],
   })
 }

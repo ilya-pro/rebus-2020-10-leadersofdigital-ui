@@ -14,7 +14,7 @@ const routes = [
   {
     path: '/',
     alias: ['/modules'],
-    name: 'modules',
+    name: 'Modules',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -23,8 +23,8 @@ const routes = [
   {
     path: '/modules/:id',
     alias: ['/modules/new'],
-    name: 'ProposalPage',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Modules.vue')
+    name: 'ModuleMainPage',
+    component: () => import(/* webpackChunkName: "about" */ '../views/ModuleMainPage.vue')
   }
 ]
 
