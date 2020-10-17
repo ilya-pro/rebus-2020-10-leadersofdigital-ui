@@ -22,7 +22,7 @@ const routes = [
   },
   {
     path: '/modules/:id',
-    alias: ['/modules/new'],
+    alias: ['/modules/new-module'],
     name: 'ModuleMainPage',
     component: () => import(/* webpackChunkName: "about" */ '../views/ModuleMainPage.vue')
   }
