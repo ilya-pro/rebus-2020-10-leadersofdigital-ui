@@ -1,9 +1,32 @@
 <template>
   <v-container class="rb-ModuleMain"
                height="100%">
-    Редактор модуля  «{{ $store.state.currentModule.name }}»   статус: {{ $store.state.currentModule.status }}
+    Редактор модуля
     <div v-if="$route.params.detail === 'common'">
-      Общие данные
+      <div class="rb-ModuleMain__title title" style="margin-bottom: 15px;">
+        <span>Общие данные модуля <v-text-field class="rb-ModuleMain__titleTextField" v-model="$store.state.currentModule.name" label="Название модуля" required ></v-text-field></span>
+        <span>статус: {{ $store.state.currentModule.status }}</span>
+      </div>
+      <v-text-field v-model="$store.state.currentModule.general_concept" label="Общий замысел модуля"></v-text-field>
+      <v-text-field v-model="$store.state.currentModule.base_idea" label="Базовая идея" required></v-text-field>
+      <v-text-field v-model="$store.state.currentModule.comment" label="Комментарий"></v-text-field>
+      <v-text-field v-model="$store.state.currentModule.problematic_question" label="Проблемный вопрос" required></v-text-field>
+      <v-row>
+        <v-col>
+          <v-text-field v-model="$store.state.currentModule.subject" label="Предмет" required></v-text-field>
+        </v-col>
+        <v-col>
+          <v-text-field v-model="$store.state.currentModule.step" label="Класс" required></v-text-field>
+        </v-col>
+        <v-col>
+          <v-text-field v-model="$store.state.currentModule.work_hours" label="Академических часов" required></v-text-field>
+        </v-col>
+      </v-row>
+      <v-file-input
+        show-size
+        truncate-length="15"
+        label="Изображение обложки"
+      ></v-file-input>
     </div>
     <v-row  v-if="$route.params.detail === 'scheme'">
       <!--:cols="8" xs="12" sm="12" lg="8"-->
@@ -41,5 +64,12 @@ export default {
 </script>
 
 <style scoped>
-
+.rb-ModuleMain__title {
+  display: flex;
+  justify-content: space-between;
+}
+.rb-ModuleMain__titleTextField {
+  display: inline-flex;
+  width: 300px;
+}
 </style>
