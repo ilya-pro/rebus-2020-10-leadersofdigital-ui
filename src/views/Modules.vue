@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    import ModulesList from '@/components/ModulesList'
+    import ModulesList from '@/components/modules/ModulesList'
     export default {
         name: "Login",
         components: {

@@ -3,8 +3,9 @@ import Vuex from 'vuex'
 import axios from "axios";
 import {
   AUTH_REQUEST, AUTH_SUCCESS, AUTH_ERROR, AUTH_LOGOUT,
-  LOAD_USER_DATA, SET_USER_DATA
-} from "./mutation-types";
+  LOAD_USER_DATA, SET_USER_DATA,
+  LOAD_MODULES, APPLY_MODULES
+} from './mutation-types'
 import {API_BASE_URL} from '@/utils/axios-helper';
 
 Vue.use(Vuex)
@@ -20,8 +21,10 @@ export default new Vuex.Store({
 
     user: {
       avatarSmall: ''
-    }
+    },
 
+    // список учебных модулей
+    modules: []
   },
   /*
     фиксация и отслеживание изменений state
@@ -44,6 +47,9 @@ export default new Vuex.Store({
       state.user = {
         avatarSmall: userData.little_avatar
       }
+    },
+    [APPLY_MODULES]: (state, modules) => {
+      state.modules = modules;
     }
   },
   // обновляет state через вызов mutations
@@ -95,6 +101,16 @@ export default new Vuex.Store({
       axios(config).then(response => {
         console.log('LOAD_USER_DATA  loaded', response);
         context.commit(SET_USER_DATA, response.data)
+      });
+    },
+    [LOAD_MODULES]: (context) => {
+      const config = {
+        method: 'get',
+        url: API_BASE_URL + 'education/modules/',
+        headers: { 'Authorization': 'Bearer '+ context.state.token }
+      }
+      axios(config).then(response => {
+        context.commit(APPLY_MODULES, response.data)
       });
     }
   },
