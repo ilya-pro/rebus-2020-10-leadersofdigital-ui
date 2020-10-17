@@ -8,6 +8,8 @@
     <v-app-bar app
                color="#262C40"
                dark>
+      <v-toolbar-title>{{ this.$route.title }}</v-toolbar-title>
+      <HealthChecker/>
     </v-app-bar>
     <!-- Sizes your content based upon application components -->
     <v-main>
@@ -29,11 +31,13 @@
 <script>
 // import HelloWorld from './components/HelloWorld'
 import Drawer from '@/components/Drawer'
+import HealthChecker from '@/components/base/HealthChecker'
 
 export default {
   name: 'App',
 
   components: {
+    HealthChecker,
     Drawer
   },
 
