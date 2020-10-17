@@ -52,4 +52,6 @@ export const APPLY_SINGLE_MODULES = 'APPLY_SINGLE_MODULES';
 
 export const MODULE_SAVE = 'MODULE_SAVE';
 
+export const MODULE_UPDATE = 'MODULE_UPDATE';
+
 

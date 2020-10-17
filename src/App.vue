@@ -52,7 +52,7 @@
 <script>
 // import HelloWorld from './components/HelloWorld'
 import Drawer from '@/components/Drawer'
-import { MODULE_SAVE } from '@/store/mutation-types'
+import { MODULE_SAVE, MODULE_UPDATE } from '@/store/mutation-types'
 
 export default {
   name: 'App',
@@ -75,7 +75,14 @@ export default {
   methods: {
     moduleSave() {
       // отправляем стору на сохранение
-      this.$store.dispatch(MODULE_SAVE, this.$store.state.currentModule);
+      if (this.$route.params.id === 'new-module') {
+        // новый модуль
+        this.$store.dispatch(MODULE_SAVE, this.$store.state.currentModule);
+      } else {
+        // существующий модуль
+        this.$store.dispatch(MODULE_UPDATE, this.$route.params.id);
+      }
+
     }
   }
 }
