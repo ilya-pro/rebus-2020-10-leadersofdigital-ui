@@ -62,9 +62,8 @@
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld'
 import Drawer from '@/components/Drawer'
-import { LOAD_USER_DATA, MODULE_SAVE, MODULE_UPDATE } from '@/store/mutation-types'
+import { LOAD_USER_DATA, MODULE_SAVE, MODULE_UPDATE, TASK_CHECK } from '@/store/mutation-types'
 
 export default {
   name: 'App',
@@ -100,7 +99,9 @@ export default {
 
     },
     sendToCheck() {
-      //TODO
+      // TODO брать от текущей задачи
+      var taskId = 2;
+      this.$store.dispatch(TASK_CHECK, taskId);
     }
   },
   mounted () {

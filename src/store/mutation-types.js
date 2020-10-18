@@ -55,5 +55,6 @@ export const MODULE_SAVE = 'MODULE_SAVE';
 export const MODULE_UPDATE = 'MODULE_UPDATE';
 
 export const TASK_SAVE = 'TASK_SAVE';
+export const TASK_CHECK = 'TASK_CHECK';
 
 

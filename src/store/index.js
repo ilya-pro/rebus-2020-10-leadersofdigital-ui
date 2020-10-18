@@ -2,9 +2,20 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from "axios";
 import {
-  AUTH_REQUEST, AUTH_SUCCESS, AUTH_ERROR, AUTH_LOGOUT,
-  LOAD_USER_DATA, SET_USER_DATA,
-  LOAD_MODULES, APPLY_MODULES, LOAD_SINGLE_MODULE, APPLY_SINGLE_MODULES, MODULE_SAVE, MODULE_UPDATE, TASK_SAVE
+  AUTH_REQUEST,
+  AUTH_SUCCESS,
+  AUTH_ERROR,
+  AUTH_LOGOUT,
+  LOAD_USER_DATA,
+  SET_USER_DATA,
+  LOAD_MODULES,
+  APPLY_MODULES,
+  LOAD_SINGLE_MODULE,
+  APPLY_SINGLE_MODULES,
+  MODULE_SAVE,
+  MODULE_UPDATE,
+  TASK_SAVE,
+  TASK_CHECK
 } from './mutation-types'
 import {API_BASE_URL} from '@/utils/axios-helper';
 
@@ -166,6 +177,17 @@ export default new Vuex.Store({
         console.log('task save', result.data);
       }).catch((error) => {
         console.log('task save error', error);
+      });
+    },
+    [TASK_CHECK]: (context, taskId) => {
+      const auth = {
+        headers: { 'Authorization': 'Bearer '+ context.state.token }
+      }
+      console.log('TASK_CHECK', context.state.currentModule);
+      axios.post(API_BASE_URL + `education/tasks/${taskId}/run_checks/`, '', auth).then(result => {
+        console.log('run_checks', result.data);
+      }).catch((error) => {
+        console.log('run_checks error', error);
       });
     }
   },
