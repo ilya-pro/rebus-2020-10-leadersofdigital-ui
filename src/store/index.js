@@ -15,7 +15,7 @@ import {
   MODULE_SAVE,
   MODULE_UPDATE,
   TASK_SAVE,
-  TASK_CHECK
+  TASK_CHECK, APPLY_LEVEL, LEVEL_SAVE
 } from './mutation-types'
 import {API_BASE_URL} from '@/utils/axios-helper';
 
@@ -48,7 +48,14 @@ export default new Vuex.Store({
       work_minute: '10',
       soft_skills: ['team_work'],
       version: 1
-    }
+    },
+
+    currentLevel: {
+      level_step: '', // Уровень 2,3,4
+      target: '', // * Описание элемента цели
+      example: '', // * Пример достижения цели (Я могу…)
+      module: null // * readonly
+    },
   },
   /*
     фиксация и отслеживание изменений state
@@ -84,7 +91,10 @@ export default new Vuex.Store({
     },
     [APPLY_SINGLE_MODULES]: (state, currentModule) => {
       state.currentModule = currentModule;
-    }
+    },
+    [APPLY_LEVEL]: (state, newLevel) => {
+      state.currentLevel = newLevel;
+    },
   },
   // обновляет state через вызов mutations
   actions: {
@@ -172,7 +182,7 @@ export default new Vuex.Store({
       const auth = {
         headers: { 'Authorization': 'Bearer '+ context.state.token }
       }
-      console.log('MODULE_UPDATE', context.state.currentModule);
+      console.log('MODULE_UPDATE', task);
       axios.post(API_BASE_URL + 'education/tasks/', task, auth).then(result => {
         console.log('task save', result.data);
       }).catch((error) => {
@@ -183,13 +193,24 @@ export default new Vuex.Store({
       const auth = {
         headers: { 'Authorization': 'Bearer '+ context.state.token }
       }
-      console.log('TASK_CHECK', context.state.currentModule);
+      console.log('TASK_CHECK', taskId);
       axios.post(API_BASE_URL + `education/tasks/${taskId}/run_checks/`, '', auth).then(result => {
         console.log('run_checks', result.data);
       }).catch((error) => {
         console.log('run_checks error', error);
       });
-    }
+    },
+    [LEVEL_SAVE]: (context, level) => {
+      const auth = {
+        headers: { 'Authorization': 'Bearer '+ context.state.token }
+      }
+      console.log('LEVEL_SAVE', level);
+      axios.post(API_BASE_URL + 'education/levels/', level, auth).then(result => {
+        console.log('level save', result.data);
+      }).catch((error) => {
+        console.log('level save error', error);
+      });
+    },
   },
   // вычислимые свойства состояния
   getters: {

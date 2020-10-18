@@ -9,29 +9,29 @@
         sm="3"
         md="6"
       >
-        <GoalCard />
+        <LevelCard />
       </v-col>
       <v-col
         sm="3"
         md="6"
       >
-        <GoalCard />
+        <LevelCard />
       </v-col>
       <v-col
         sm="3"
         md="6"
       >
-        <GoalCard />
+        <LevelCard />
       </v-col>
     </v-row>
   </div>
 </template>
 
 <script>
-import GoalCard from '@/components/goal/GoalCard'
+import LevelCard from '@/components/level/LevelCard'
 export default {
-name: "GoalList",
-  components: { GoalCard }
+name: "LevelList",
+  components: { LevelCard }
 }
 </script>
 

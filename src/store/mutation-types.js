@@ -57,4 +57,7 @@ export const MODULE_UPDATE = 'MODULE_UPDATE';
 export const TASK_SAVE = 'TASK_SAVE';
 export const TASK_CHECK = 'TASK_CHECK';
 
+export const APPLY_LEVEL = 'APPLY_LEVEL';
+export const LEVEL_SAVE = 'LEVEL_SAVE';
+
 
