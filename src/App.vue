@@ -52,7 +52,7 @@
 <script>
 // import HelloWorld from './components/HelloWorld'
 import Drawer from '@/components/Drawer'
-import { MODULE_SAVE, MODULE_UPDATE } from '@/store/mutation-types'
+import { LOAD_USER_DATA, MODULE_SAVE, MODULE_UPDATE } from '@/store/mutation-types'
 
 export default {
   name: 'App',
@@ -84,6 +84,13 @@ export default {
       }
 
     }
+  },
+  mounted () {
+    // если токена нет, выходим на страницу логина
+    if (!this.$store.state.token) {
+      this.$router.push('/login');
+    }
+    this.$store.dispatch(LOAD_USER_DATA);
   }
 }
 </script>
