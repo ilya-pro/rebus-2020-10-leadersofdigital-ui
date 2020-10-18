@@ -3,7 +3,7 @@
     <v-row>
       <v-col cols="12" md="4">
         <v-img
-          src="https://newschool.sberclass.ru/services/storage/download/global/82ebabef-ebd2-49f7-9c7d-76d3da8f7243?path=c1f1758b-243d-4f79-82b3-54094068ce36/cb8a4b52-5992-493f-94f6-9f9934b91ab1/flame_w200.png"
+          :src="value.cover_picture"
           class="white--text align-start"
           max-height="100%"
           gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"

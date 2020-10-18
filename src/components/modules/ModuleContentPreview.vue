@@ -4,7 +4,7 @@
     tile
     height="100%"
   >
-    <v-card-title>ModuleContentPreview</v-card-title>
+    <v-card-title>Основыные параметры</v-card-title>
   </v-card>
 </template>
 

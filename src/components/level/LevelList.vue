@@ -13,10 +13,7 @@
         <LevelCard :value="level"/>
       </v-col>
     </v-row>
-    <div v-if="!$store.state.currentModule.levels.length">
-
-    </div>
-    <v-card
+    <v-card v-if="!$store.state.currentModule.levels.length"
       class="pa-10"
       outlined
     >
