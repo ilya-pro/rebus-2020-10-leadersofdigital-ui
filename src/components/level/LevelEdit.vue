@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { APPLY_LEVEL, LEVEL_SAVE } from '@/store/mutation-types'
+import { APPLY_LEVEL, LEVEL_LOAD, LEVEL_SAVE } from '@/store/mutation-types'
 
 export default {
   name: 'LevelEdit',
@@ -59,13 +59,18 @@ export default {
   },
   mounted () {
     var moduleId = this.$route.params.id;
-    var currentLevel = {
-      level_step: '', // Уровень 2,3,4
-      target: '', // * Описание элемента цели
-      example: '', // * Пример достижения цели (Я могу…)
-      module: moduleId // * readonly
-    };
-    this.$store.commit(APPLY_LEVEL, currentLevel);
+    var levelId = this.$route.params.levelId;
+    if (levelId === 'new-level') {
+      var currentLevel = {
+        level_step: '', // Уровень 2,3,4
+        target: '', // * Описание элемента цели
+        example: '', // * Пример достижения цели (Я могу…)
+        module: moduleId // * readonly
+      };
+      this.$store.commit(APPLY_LEVEL, currentLevel);
+    } else {
+      this.$store.dispatch(LEVEL_LOAD, levelId);
+    }
   }
 }
 </script>

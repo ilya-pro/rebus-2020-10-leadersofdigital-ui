@@ -59,5 +59,6 @@ export const TASK_CHECK = 'TASK_CHECK';
 
 export const APPLY_LEVEL = 'APPLY_LEVEL';
 export const LEVEL_SAVE = 'LEVEL_SAVE';
+export const LEVEL_LOAD = 'LEVEL_LOAD';
 
 

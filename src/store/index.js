@@ -15,7 +15,7 @@ import {
   MODULE_SAVE,
   MODULE_UPDATE,
   TASK_SAVE,
-  TASK_CHECK, APPLY_LEVEL, LEVEL_SAVE
+  TASK_CHECK, APPLY_LEVEL, LEVEL_SAVE, LEVEL_LOAD
 } from './mutation-types'
 import {API_BASE_URL} from '@/utils/axios-helper';
 
@@ -211,6 +211,16 @@ export default new Vuex.Store({
         console.log('level save', result.data);
       }).catch((error) => {
         console.log('level save error', error);
+      });
+    },
+    [LEVEL_LOAD]: (context, levelId) => {
+      const config = {
+        method: 'get',
+        url: API_BASE_URL + `education/levels/${levelId}/`,
+        headers: { 'Authorization': 'Bearer '+ context.state.token }
+      }
+      axios(config).then(response => {
+        context.commit(APPLY_LEVEL, response.data)
       });
     },
   },
