@@ -39,7 +39,9 @@ export default new Vuex.Store({
     modules: [],
 
     // текущий модуль
-    currentModule: {  },
+    currentModule: {
+      levels: []
+    },
 
     // текущая задача
     currentTask: {
