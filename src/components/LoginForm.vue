@@ -28,7 +28,12 @@
       </v-form>
     </v-col>
     <v-col cols="12" md="6">
-      <div>ЛОГО</div>
+      <v-img
+        :src="require('../assets/rebus.png')"
+        class="my-3"
+        contain
+        width="300"
+      />
     </v-col>
   </v-row>
 

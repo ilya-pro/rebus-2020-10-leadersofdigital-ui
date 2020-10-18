@@ -4,7 +4,7 @@
     class="rb-GoalCard pa-6"
     tile
   >
-    <v-card-title>GoalCard</v-card-title>
+    <v-card-title>Цель</v-card-title>
   </v-card>
 </template>
 

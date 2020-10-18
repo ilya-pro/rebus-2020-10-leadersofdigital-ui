@@ -34,6 +34,12 @@ const routes = [
     name: 'ModuleMainPage',
     component: () => import(/* webpackChunkName: "about" */ '../views/ModuleMainPage.vue')
   },
+  {
+    path: '/modules/:id/task/:taskId', // '/modules/:id/task/new-task'
+    //alias: ['/modules/:id/:detail'], ///modules/:id/common', '/modules/:id/scheme'
+    name: 'TaskPage',
+    component: () => import(/* webpackChunkName: "about" */ '../views/TaskPage.vue')
+  },
 ]
 
 const router = new VueRouter({
