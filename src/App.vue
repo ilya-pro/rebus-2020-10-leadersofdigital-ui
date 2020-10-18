@@ -24,6 +24,13 @@
           class="ml-5"
           elevation="2"
           color="primary"
+          @click="addLevel()"
+        >+ Цель</v-btn>
+        <v-btn
+          v-if="!$route.path.includes('/modules/new-module')"
+          class="ml-5"
+          elevation="2"
+          color="primary"
           @click="addTask()"
         >+ Задача</v-btn>
 
@@ -84,6 +91,10 @@ export default {
     ],
   }),
   methods: {
+    addLevel() {
+      var moduleId = this.$route.params.id;
+      this.$router.push(`/modules/${moduleId}/level/new-level`);
+    },
     addTask() {
       this.$router.push(`/modules/${this.$route.params.id}/task/new-task`);
     },

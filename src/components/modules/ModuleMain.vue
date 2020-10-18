@@ -32,7 +32,7 @@
       <!--:cols="8" xs="12" sm="12" lg="8"-->
       <v-col cols="12"  md="8" >
         <!--<ModuleContentTiles />-->
-        <GoalList />
+        <LevelList />
         <TaskList />
       </v-col>
       <v-col cols="12" md="4">
@@ -46,10 +46,10 @@
 import ModuleContentPreview from '@/components/modules/ModuleContentPreview'
 import { LOAD_SINGLE_MODULE } from '@/store/mutation-types'
 import TaskList from '@/components/task/TaskList'
-import GoalList from '@/components/goal/GoalList'
+import LevelList from '@/components/level/LevelList'
 export default {
   name: 'ModuleMain',
-  components: { GoalList, TaskList, ModuleContentPreview },
+  components: { LevelList, TaskList, ModuleContentPreview },
   mounted() {
     if (this.$route.params.id === 'new-module') {
       // Новый модуль. Загружать нечего, предоставляем пустые поля, для заполнения

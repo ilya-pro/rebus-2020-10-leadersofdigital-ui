@@ -36,9 +36,13 @@ const routes = [
   },
   {
     path: '/modules/:id/task/:taskId', // '/modules/:id/task/new-task'
-    //alias: ['/modules/:id/:detail'], ///modules/:id/common', '/modules/:id/scheme'
     name: 'TaskPage',
     component: () => import(/* webpackChunkName: "about" */ '../views/TaskPage.vue')
+  },
+  {
+    path: '/modules/:id/level/:levelId', // '/modules/:id/level/new-level'
+    name: 'LevelPage',
+    component: () => import(/* webpackChunkName: "about" */ '../views/LevelPage.vue')
   },
 ]
 
