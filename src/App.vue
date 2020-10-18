@@ -35,6 +35,7 @@
         >+ Задача</v-btn>
 
         <v-btn
+          v-if="$route.path.includes('/task/')"
           class="ml-5"
           color="primary"
           elevation="2"
