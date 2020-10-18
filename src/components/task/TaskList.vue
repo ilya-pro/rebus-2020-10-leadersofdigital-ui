@@ -6,14 +6,14 @@
       no-gutters
     >
       <v-col
-        sm="3"
-        md="6"
+        sm="2"
+        md="2"
       >
         <TaskCard/>
       </v-col>
       <v-col
-        sm="3"
-        md="6"
+        sm="2"
+        md="2"
       >
         <TaskCard/>
       </v-col>

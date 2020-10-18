@@ -12,22 +12,34 @@
       <!--class="hidden-md-and-up"-->
       <v-app-bar-nav-icon v-if="$store.state.token" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <!--<v-toolbar-title>{{ this.$route.title }}</v-toolbar-title>-->
-      <v-row>
-        <v-col>
-          <v-tabs v-if="$route.path.includes('/modules/')" background-color="transparent">
-            <v-tab :to="{ path: `/modules/${this.$route.params.id}/common` }">Общее</v-tab>
-            <v-tab :to="{ path: `/modules/${this.$route.params.id}/scheme` }">Схема</v-tab>
-          </v-tabs>
-        </v-col>
-        <v-spacer/>
-        <v-col>
-          <v-btn elevation="2"
-                 color="success"
-                 @click="moduleSave()"
-          >Сохранить
-          </v-btn>
-        </v-col>
-      </v-row>
+      <v-container v-if="$route.path.includes('/modules/')"
+                   class="d-flex justify-space-between align-center">
+        <v-tabs background-color="transparent">
+          <v-tab :to="{ path: `/modules/${this.$route.params.id}/common` }">Общее</v-tab>
+          <v-tab :to="{ path: `/modules/${this.$route.params.id}/scheme` }">Схема</v-tab>
+        </v-tabs>
+        <!-- добавление задачи только после сохранения модуля -->
+        <v-btn
+          v-if="!$route.path.includes('/modules/new-module')"
+          class="ml-5"
+          elevation="2"
+          color="primary"
+          @click="addTask()"
+        >+ Задача</v-btn>
+
+        <v-btn
+          class="ml-5"
+          color="primary"
+          elevation="2"
+          @click="sendToCheck()"
+        >Автопроверка</v-btn>
+        <v-btn
+          class="ml-5"
+          elevation="2"
+          color="success"
+          @click="moduleSave()"
+        >Сохранить</v-btn>
+      </v-container>
 
       <!--{{ this.$route.params.id }}-->
       <!--<HealthChecker/>-->
@@ -73,6 +85,9 @@ export default {
     ],
   }),
   methods: {
+    addTask() {
+      this.$router.push(`/modules/${this.$route.params.id}/task/new-task`);
+    },
     moduleSave() {
       // отправляем стору на сохранение
       if (this.$route.params.id === 'new-module') {
@@ -83,14 +98,18 @@ export default {
         this.$store.dispatch(MODULE_UPDATE, this.$route.params.id);
       }
 
+    },
+    sendToCheck() {
+      //TODO
     }
   },
   mounted () {
     // если токена нет, выходим на страницу логина
     if (!this.$store.state.token) {
       this.$router.push('/login');
+    } else {
+      this.$store.dispatch(LOAD_USER_DATA);
     }
-    this.$store.dispatch(LOAD_USER_DATA);
   }
 }
 </script>

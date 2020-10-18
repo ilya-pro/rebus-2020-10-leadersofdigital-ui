@@ -1,7 +1,7 @@
 <template>
   <v-card class="rb-TaskCard"
           tile>
-    <v-card-title>Task Card 2</v-card-title>
+    <v-card-title>2.0</v-card-title>
     <v-menu
       bottom
       left

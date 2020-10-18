@@ -4,7 +4,7 @@ import axios from "axios";
 import {
   AUTH_REQUEST, AUTH_SUCCESS, AUTH_ERROR, AUTH_LOGOUT,
   LOAD_USER_DATA, SET_USER_DATA,
-  LOAD_MODULES, APPLY_MODULES, LOAD_SINGLE_MODULE, APPLY_SINGLE_MODULES, MODULE_SAVE, MODULE_UPDATE
+  LOAD_MODULES, APPLY_MODULES, LOAD_SINGLE_MODULE, APPLY_SINGLE_MODULES, MODULE_SAVE, MODULE_UPDATE, TASK_SAVE
 } from './mutation-types'
 import {API_BASE_URL} from '@/utils/axios-helper';
 
@@ -28,7 +28,16 @@ export default new Vuex.Store({
     modules: [],
 
     // текущий модуль
-    currentModule: {  }
+    currentModule: {  },
+
+    // текущая задача
+    currentTask: {
+      name: 'Новое Задание',
+      work_form: 'individual',
+      work_minute: '10',
+      soft_skills: ['team_work'],
+      version: 1
+    }
   },
   /*
     фиксация и отслеживание изменений state
@@ -146,6 +155,17 @@ export default new Vuex.Store({
         console.log(result.data)
       }).catch((error) => {
         console.log('error', error)
+      });
+    },
+    [TASK_SAVE]: (context, task) => {
+      const auth = {
+        headers: { 'Authorization': 'Bearer '+ context.state.token }
+      }
+      console.log('MODULE_UPDATE', context.state.currentModule);
+      axios.post(API_BASE_URL + 'education/tasks/', task, auth).then(result => {
+        console.log('task save', result.data);
+      }).catch((error) => {
+        console.log('task save error', error);
       });
     }
   },
